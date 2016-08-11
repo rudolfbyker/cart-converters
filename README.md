@@ -13,6 +13,11 @@ Convert web shopping carts to CSV
 * `CTRL+A`, `CTRL+C`
 * Paste in a .txt file
 * Run `./parse_website.py shopping_cart.txt`
+* If you have LibreOffice installed, you can convert the csv file to your favourite spreadsheet format:
+
+  ```sh
+  $ libreoffice --convert-to xls shopping_cart.csv
+  ```
 
 ## TODO:
 * One script which auto-detects supported websites
