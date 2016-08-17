@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 import unicodecsv as csv
 import sys
@@ -46,20 +46,20 @@ def main():
 
     with open(input_filename, 'rb') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter='\t')
-    lines = filter_cart_lines(csv_reader)
-    items = filter_cart_items(lines)
-    output_lines = ([
-                        item['unit price'],
-                        item['qty'],
-                        item['stock code'],
-                        item['part number'],
-                        item['description'],
-                    ] for item in items)
+        lines = filter_cart_lines(csv_reader)
+        items = filter_cart_items(lines)
+        output_lines = ([
+                            item['unit price'],
+                            item['qty'],
+                            item['stock code'],
+                            item['part number'],
+                            item['description'],
+                        ] for item in items)
 
-    with open(output_filename, 'wb') as csv_file:
-        csv_writer = csv.writer(csv_file)
-        csv_writer.writerow(csv_output_header)
-        csv_writer.writerows(output_lines)
+        with open(output_filename, 'wb') as csv_file:
+            csv_writer = csv.writer(csv_file)
+            csv_writer.writerow(csv_output_header)
+            csv_writer.writerows(output_lines)
 
 
 if __name__ == "__main__":
