@@ -1,5 +1,7 @@
-Ignore input and output files
+# Ignore input and output files
 *.txt
 *.csv
 *.xls
 
+# Ignore IDE files
+.idea/
