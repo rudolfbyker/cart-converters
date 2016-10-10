@@ -15,7 +15,7 @@ csv_output_header = [
     "Manufacturer",
     "Description",
 ]
-regex_item = re.compile(r"(?P<description>.+)\nRS stock no. (?P<stock_no>[\d-]+)\n(?P<manufacturer>.+)\nMfr. Part No. (?P<manufacturer_part_number>.+)\n(.*\n)*?R (?P<unit_price>[\d.]+)\n(.*\n)*?R (?P<total_price>[\d.]+)\n", re.MULTILINE | re.IGNORECASE)
+regex_item = re.compile(r"(?P<description>.+)\nRS stock no. (?P<stock_no>[\w-]+)\nBrand (?P<manufacturer>.+)\nMfr. Part No. (?P<manufacturer_part_number>.+)\n(.*\n)*?R (?P<unit_price>[\d.]+)\n(.*\n)*?R (?P<total_price>[\d.]+)\n", re.MULTILINE | re.IGNORECASE)
 
 def main():
 
