@@ -15,7 +15,17 @@ csv_output_header = [
     "Manufacturer",
     "Description",
 ]
-regex_item = re.compile(r"(?P<description>.+)\nRS stock no. (?P<stock_no>[\w-]+)\nBrand (?P<manufacturer>.+)\nMfr. Part No. (?P<manufacturer_part_number>.+)\n(.*\n)*?R (?P<unit_price>[\d.]+)\n(.*\n)*?R (?P<total_price>[\d.]+)\n", re.MULTILINE | re.IGNORECASE)
+regex_item = re.compile(
+    r"(?P<description>.+)\n"
+    r"RS stock no. (?P<stock_no>[\w-]+)\n"
+    r"Brand (?P<manufacturer>.+)\n"
+    r"(Mfr. Part No. (?P<manufacturer_part_number>.+)\n)?"  # Mfr. Part No. is not specified for RS Pro components.
+    r"(.*\n)*?"
+    r"R (?P<unit_price>[\d.]+)\n"
+    r"(.*\n)*?"
+    r"R (?P<total_price>[\d.]+)\n",
+    re.MULTILINE | re.IGNORECASE
+)
 
 def main():
 
@@ -41,6 +51,9 @@ def main():
         csv_writer = csv.writer(csv_file)
         csv_writer.writerow(csv_output_header)
         csv_writer.writerows(csv_output_lines)
+        for line in csv_output_lines:
+            print line
+
 
 
 if __name__ == "__main__":
